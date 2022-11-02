@@ -15,9 +15,10 @@ return new class extends Migration
     {
         Schema::create('transactions', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('parent_id')->nullable();
+            $table->string('parent_email');
             $table->double('paid_amount');
             $table->string('currency', 5);
-            $table->string('parent_email');
             $table->tinyInteger('status_code');
             $table->date('payment_date');
             $table->string('parent_identification');

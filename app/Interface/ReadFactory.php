@@ -1,25 +1,23 @@
 <?php
 
-namespace Interface;
+namespace App\Interface;
 
-use Interface\JsonFile;
-use Interface\HttpRequest;
-use Interface\ReadableInterface;
+use App\Interface\JsonFile;
+use App\Interface\HttpRequest;
 
 class ReadFactory
 {
-    public function initialize(string $type ,$source): ReadableInterface
+    public function initialize(string $type, $source)
     {
         switch ($type) {
             case 'json-file':
                 $class =  new JsonFile($source);
-                $class->read();
-                return $class;
+                return $class->read();
 
             case 'http-request':
+               
                 $class =  new HttpRequest($source);
-                $class->read();
-                return $class;
+                return  $class->read();
 
             default:
                 throw new \Exception("Reading method not supported");
