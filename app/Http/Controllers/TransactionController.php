@@ -39,7 +39,7 @@ class TransactionController extends Controller
                 ->when($request->status, function ($query) use ($request) {
                     $query->status($request->status);
                 })
-                ->when($request->currencies[0] != null, function ($query) use ($request) {
+                ->when($request->currencies and $request->currencies[0] != null, function ($query) use ($request) {
                     $query->whereIn('currency', [$request->currencies]);
                 })
                 ->when($request->from_amount and $request->to_amount, function ($query) use ($request) {

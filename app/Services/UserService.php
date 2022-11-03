@@ -41,7 +41,6 @@ class UserService
 
         $json_data = json_decode($response);
 
-
         foreach ($json_data->users as $user) {
 
             User::updateOrCreate(
